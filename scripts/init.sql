@@ -37,7 +37,7 @@ CREATE TABLE dias (
   id SERIAL PRIMARY KEY,
   data DATE NOT NULL,
   usuario_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
-  xp NUMERIC(5,2) NOT NULL, -- Ex: 75.00%
+  xp NUMERIC(5,2) NOT NULL, 
   frase_id INTEGER REFERENCES frases(id),
   CONSTRAINT dia_unico_por_usuario UNIQUE (data, usuario_id)
 );

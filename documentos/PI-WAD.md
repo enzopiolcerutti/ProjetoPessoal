@@ -157,7 +157,7 @@ INSERT INTO frases_motivacionais (texto, faixa_xp_min, faixa_xp_max) VALUES
 ('Produtividade em alta! Orgulho define.', 81, 100),
 ('Dia concluído com sucesso! Você merece comemorar.', 81, 100);
 ```
-
+Desse modo, com esses códigos existe a adequação do banco de dados com o projeto.
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
 
