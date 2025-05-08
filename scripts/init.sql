@@ -1,6 +1,12 @@
 -- init.sql
 
--- Tabela de usuários
+drop table if EXISTS tarefas;
+drop table if EXISTS categorias;
+drop table if EXISTS dias;
+drop table if EXISTS frases;
+drop table if EXISTS usuarios;
+
+-- Tabela de usuário
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
   nome TEXT NOT NULL,
