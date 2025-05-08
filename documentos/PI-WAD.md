@@ -89,7 +89,7 @@ Bancos de dados relacionais organizam informações em tabelas interligadas, fac
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
-Este é o modelo do banco de dados do DayTrack. Nele, há quatro tabelas que são inseridas no código por meio de um arquivo .sql, localizado na pasta scripts.
+Este é o modelo do banco de dados. Nele, há cinco tabelas que são inseridas no código por meio de um arquivo .sql, localizado na pasta scripts. 
 
 Sua organização é a seguinte: 
 
@@ -133,8 +133,30 @@ CREATE TABLE dias (
 );
 ```
 
-Assim, com a implementação desse código, existe a criação do banco de dados que armazenará as informações do usuário, suas tarefas, categorias, frases motivacionais e os dias de registro.
+Assim, com a implementação desse código, existe a criação do banco de dados que armazenará as informações do usuário, suas tarefas, categorias, frases e os dias de registro. Também ocorre a implementação das frases motivacionais que estão sendo adicionadas no banco por esse código:
+```sql
 
+INSERT INTO frases_motivacionais (texto, faixa_xp_min, faixa_xp_max) VALUES
+('Todo começo é difícil, mas você deu o primeiro passo!', 0, 40),
+('Não se cobre demais, amanhã é uma nova chance.', 0, 40),
+('Pequenos avanços ainda são avanços!', 0, 40),
+('A constância é mais importante que a velocidade.', 0, 40),
+('Respire fundo. Você ainda está no jogo.', 0, 40);
+
+INSERT INTO frases_motivacionais (texto, faixa_xp_min, faixa_xp_max) VALUES
+('Bom trabalho! Você está no caminho certo.', 41, 80),
+('Mais um dia produtivo, continue assim!', 41, 80),
+('Seu esforço está rendendo resultados.', 41, 80),
+('Você está construindo um hábito poderoso.', 41, 80),
+('Parabéns por manter o ritmo!', 41, 80);
+
+INSERT INTO frases_motivacionais (texto, faixa_xp_min, faixa_xp_max) VALUES
+('Excelente! Seu dia foi extremamente produtivo!', 81, 100),
+('Você mandou muito bem hoje, continue nessa pegada!', 81, 100),
+('Sua dedicação está fazendo a diferença.', 81, 100),
+('Produtividade em alta! Orgulho define.', 81, 100),
+('Dia concluído com sucesso! Você merece comemorar.', 81, 100);
+```
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
