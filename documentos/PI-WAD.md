@@ -85,7 +85,7 @@ Bancos de dados relacionais organizam informações em tabelas interligadas, fac
 
 <div align="center">
   <sub>FIGURA 2 - Modelagem do Banco de Dados</sub><br>
-  <img src="../assets/modeloBanco.png" width="100%" alt="Persona"><br>
+  <img src="../assets/modeloBanco.png" width="100%" alt="modeloBanco"><br>
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
