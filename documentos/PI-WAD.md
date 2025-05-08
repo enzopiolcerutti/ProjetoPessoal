@@ -94,6 +94,11 @@ Este é o modelo do banco de dados. Nele, há cinco tabelas que são inseridas n
 Sua organização é a seguinte: 
 
 ```sql
+drop table if EXISTS tarefas;
+drop table if EXISTS categorias;
+drop table if EXISTS dias;
+drop table if EXISTS frases;
+drop table if EXISTS usuarios;
 
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
