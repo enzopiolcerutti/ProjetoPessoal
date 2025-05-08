@@ -89,9 +89,21 @@ Bancos de dados relacionais organizam informações em tabelas interligadas, fac
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
-Este é o modelo do banco de dados. Nele, há cinco tabelas que são inseridas no código por meio de um arquivo .sql, localizado na pasta scripts. 
+### Este é o modelo do banco de dados. Nele, há cinco tabelas que são elas: 
 
-Sua organização é a seguinte: 
+- **Tabela** **de** **Usuários:** Principal tabela da aplicação web, guarda os dados dos usuários cadastrados e é a tabela conectada com as tabelas tarefas e dias, pois um usuário pode ter várias tarefas e registros de dias. Logo, é uma relação 1 para N (1:N) com as tabelas tarefas e dias.
+
+- **Tabela** **de** **Tarefas:** Guarda as tarefas criada pelos usuários, cada tarefa pertence a apenas um usuário e a uma única categoria. Logo, é uma relação N para 1 (N:1) com as tabelas de 
+usuários e categorias.
+
+- **Tabela** **de** **Categorias:** Irá armazenar as possíveis categorias de respectivas tarefas, uma categoria pode estar relacionada a várias tarefas. Logo, é uma relação 1 para N (1:N).
+
+- **Tabela** **de** **Dias:** Armazena os dados sobre o desempenho do usuário, cada dia pertence a apenas um usuário e pode estar associado a uma única frase. Logo, é uma relação N para 1 (N:1) com as tabelas de usuários e frases.
+
+- **Tabela** **de** **Frases:** Contém as frases motivacionais que o usuário irá receber ao final do dia, para poder verificar se a sua produtividade está no caminho certo ou se deve melhorar e cada frase pode estar ligada a vários registros de dias. Logo, é uma relação 1 para N (1:N) com a tabela de dias.
+
+As mesma estão inseridas no código por meio de um arquivo .sql, localizado na pasta scripts...
+### Sua organização é a seguinte: 
 
 ```sql
 drop table if EXISTS tarefas;
