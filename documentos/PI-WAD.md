@@ -20,7 +20,7 @@ Este projeto é um gerenciador de tarefas focado no planejamento diário e produ
 
 O principal diferencial é a barra de XP, inspirada em mecânicas de jogos, que é preenchida à medida que as tarefas venham a ser concluídas. A lógica é simples, tarefas feitas divididas pelo total de tarefas, com uma barra animada que muda de cor conforme o progresso (de vermelho para verde).
 
-Ao final do dia, o usuário recebe um gráfico de produtividade, mostrando a distribuição das tarefas por categoria e uma frase motivacional baseada no seu desempenho daquele dia. Isso ajuda a entender os hábitos diários e a planejar melhor os próximos dias.
+Ao final do dia, o usuário pode verificar as atividades realizadas, mostrando a distribuição das tarefas por categoria e uma frase motivacional baseada no seu desempenho daquele dia. Isso ajuda a entender os hábitos diários e a planejar melhor os próximos dias.
 
 O sistema também armazena o histórico dos dias anteriores e funciona totalmente no navegador, tornando a organização do dia a dia mais envolvente.
 
@@ -189,9 +189,21 @@ Desse modo, com esses códigos existe a adequação do banco de dados com o proj
   
 *Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
 
-### 3.3. Wireframes (Semana 03)
+### 3.3. Wireframes 
 
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
+Os wireframes mostram a estrutura básica da página e como ela será organizada. São dividias em 3 tipos: baixa, média e alta fidelidade. Os wireframes a seguir estão padronizados em baixa fidelidade.[³](#5-referências)
+
+<div align="center">
+  <sub>FIGURA 3 - Wireframe Do DayTrack</sub><br>
+  <img src="../assets/wireframePI.png" width="100%" alt="Wireframe"><br>
+  <sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+link do figma para acesso aos itens do WAD: https://www.figma.com/design/kF7ZSWzqVe7hkX6vNPTmB2/figma-pessoal?node-id=0-1&p=f&t=WoXsyOiPXFFeGblD-0
+<br>
+
+Na primeira tela, é possível visualizar a tela de login, na qual o usuário irá cadastrar seus dados para conseguir usufruir da aplicação web. Após o login, o usuário será direcionado para a tela do dashboard, onde terá acesso a todas as suas tarefas e poderá defini-las como a fazer, em andamento ou concluídas. Ao clicar no botão de adicionar, na mesma tela, o usuário poderá incluir uma nova tarefa. No barra lateral ao clicar em tarefas, também será possível visualizar todas as tarefas adicionadas, permitindo verificar quantas ainda faltam ou se o seu progresso está adequado.
+
 
 ### 3.4. Guia de estilos (Semana 05)
 
@@ -233,5 +245,9 @@ Desse modo, com esses códigos existe a adequação do banco de dados com o proj
 
 <p>
 2. DATE, C. J. Introdução a Sistemas de Bancos de Dados. 8. ed. Rio de Janeiro: Elsevier, 2004.
+</p>
+
+<p>
+3. PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. Design de interação: além da interação homem-computador. Porto Alegre: Bookman, 2011.
 </p>
 <br>
