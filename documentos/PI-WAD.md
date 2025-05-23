@@ -312,7 +312,38 @@ Na primeira tela, é possível visualizar a tela de login, na qual o usuário ir
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+ ### 3.6. WebAPI e endpoints
+
+A seguir estão descritos os principais endpoints da API do sistema **DayTrack**, organizados por entidade. Todos seguem o padrão REST e utilizam o prefixo `/api`.
+
+#### Usuários (`/api/usuarios`)
+- `GET /api/usuarios` – Lista todos os usuários cadastrados.
+- `POST /api/usuarios` – Cria um novo usuário.
+- `PUT /api/usuarios/:id` – Atualiza os dados de um usuário existente.
+- `DELETE /api/usuarios/:id` – Remove um usuário com base no ID.
+
+#### Tarefas (`/api/tarefas`)
+- `GET /api/tarefas` – Lista todas as tarefas do sistema.
+- `POST /api/tarefas` – Cria uma nova tarefa com título, data e categoria.
+- `PUT /api/tarefas/:id` – Edita uma tarefa específica.
+- `DELETE /api/tarefas/:id` – Exclui uma tarefa pelo ID.
+
+#### Dias (`/api/dias`)
+- `GET /api/dias` – Retorna os registros de produtividade dos dias.
+- `POST /api/dias` – Registra um novo dia com XP e frase.
+- `PUT /api/dias/:id` – Atualiza os dados de um dia específico.
+- `DELETE /api/dias/:id` – Remove um dia do histórico.
+
+#### Categorias (`/api/categorias`)
+- `GET /api/categorias` – Lista todas as categorias de tarefas.
+- `POST /api/categorias` – Cria uma nova categoria.
+- `PUT /api/categorias/:id` – Atualiza uma categoria existente.
+- `DELETE /api/categorias/:id` – Exclui uma categoria pelo ID.
+
+#### Frases Motivacionais (`/api/frases`)
+- `GET /api/frases` – Lista todas as frases motivacionais disponíveis.
+- `GET /api/frases/xp/:xp` – Retorna uma frase baseada na faixa de XP informada.
+
 
 ### 3.7 Interface e Navegação (Semana 07)
 
