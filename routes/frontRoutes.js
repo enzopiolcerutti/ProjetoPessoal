@@ -1,22 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
 
-// Roteamento para páginas dinâmicas
+// Rota da página de login
 router.get('/', (req, res) => {
-  res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'Página Inicial',
-    content: path.join(__dirname, '../views/pages/page1')
-  });
+  res.render('pages/login');
 });
 
-router.get('/about', (req, res) => {
-  res.render(path.join(__dirname, '../views/layout/main'), {
-    pageTitle: 'Página Inicial',
-    content: path.join(__dirname, '../views/pages/page2')
-  });
+// Rota da dashboard principal
+router.get('/dashboard', (req, res) => {
+  res.render('pages/dashboard');
 });
 
-// Adicione outras rotas conforme necessário
+// Rota de visualização de tarefas
+router.get('/tarefas', (req, res) => {
+  res.render('pages/tarefa');
+});
+
+// Rota para adicionar nova tarefa
+router.get('/nova-tarefa', (req, res) => {
+  res.render('pages/novaTarefa');
+});
 
 module.exports = router;
