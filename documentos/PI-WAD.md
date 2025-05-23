@@ -1,7 +1,7 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
 ## DayTrack
- 
+
 #### Autor do projeto: <a href="https://www.linkedin.com/in/enzo-piol-cerutti">Enzo Piol Cerutti</a> 
 
 ## Sumário
@@ -24,7 +24,6 @@ Ao final do dia, o usuário pode verificar as atividades realizadas, mostrando a
 
 O sistema também armazena o histórico dos dias anteriores e funciona totalmente no navegador, tornando a organização do dia a dia mais envolvente.
 
----
 
 ## <a name="c2"></a>2. Visão Geral da Aplicação Web
 
@@ -34,7 +33,7 @@ Personas são perfis fictícios baseados em dados reais que representam usuário
 
 <div align="center">
   <sub>FIGURA 1 - Persona</sub><br>
-  <img src="../assets/persona1.png" width="100%" alt="Persona"><br>
+  <img src="../documentos/assetsWad/persona1.png" width="100%" alt="Persona"><br>
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
@@ -85,7 +84,7 @@ Bancos de dados relacionais organizam informações em tabelas interligadas, fac
 
 <div align="center">
   <sub>FIGURA 2 - Modelagem do Banco de Dados</sub><br>
-  <img src="../assets/modeloBanco.png" width="100%" alt="Persona"><br>
+  <img src="/documentos/assetsWad/modeloBanco.png" width="100%" alt="Persona"><br>
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
@@ -163,33 +162,130 @@ INSERT INTO frases_motivacionais (texto, faixa_xp_min, faixa_xp_max) VALUES
 ('Dia concluído com sucesso! Você merece comemorar.', 81, 100);
 ```
 Desse modo, com esses códigos existe a adequação do banco de dados com o projeto.
-### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+### 3.1.1 BD e Models 
+Os models implementados no sistema web são os seguintes:
+```js
+const db = require('../config/db');
 
-### 3.2. Arquitetura (Semana 5)
+class Usuario {
+  static async listarTodos() {
+    const result = await db.query('SELECT * FROM usuarios');
+    return result.rows;
+  }
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+  static async criar({ nome, email, senha }) {
+    const result = await db.query(
+      'INSERT INTO usuarios (nome, email, senha) VALUES ($1, $2, $3) RETURNING *',
+      [nome, email, senha]
+    );
+    return result.rows[0];
+  }
+}
+```
+O model acima faz referencia a tabela de usuários do banco de dados, permitindo a manipulação dos dados referentes aos usuários. Em seguida, temos o model de categorias:
+```js
+const db = require('../config/db');
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+class Categoria {
+  static async listarTodas() {
+    const result = await db.query('SELECT * FROM categorias');
+    return result.rows;
+  }
+
+  static async criar({ nome }) {
+    const result = await db.query(
+      'INSERT INTO categorias (nome) VALUES ($1) RETURNING *',
+      [nome]
+    );
+    return result.rows[0];
+  }
+}
+```
+O model acima faz referencia a tabela de categorias do banco de dados, permitindo a manipulação dos dados referentes às categorias. Em seguida, temos o model de tarefas:
+```js
+const db = require('../config/db');
+
+class Tarefa {
+  static async listarTodas() {
+    const result = await db.query('SELECT * FROM tarefas');
+    return result.rows;
+  }
+
+  static async criar({ titulo, concluida, data, usuario_id, categoria_id }) {
+    const result = await db.query(
+      'INSERT INTO tarefas (titulo, concluida, data, usuario_id, categoria_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [titulo, concluida, data, usuario_id, categoria_id]
+    );
+    return result.rows[0];
+  }
+} 
+```
+O model acima faz referencia a tabela de tarefas do banco de dados, permitindo a manipulação dos dados referentes às tarefas. Em seguida, temos o model de dias:
+```js
+const db = require('../config/db');
+
+class Dia {
+  static async listarTodos() {
+    const result = await db.query('SELECT * FROM dias');
+    return result.rows;
+  }
+
+  static async criar({ data, usuario_id, xp, frase_id }) {
+    const result = await db.query(
+      'INSERT INTO dias (data, usuario_id, xp, frase_id) VALUES ($1, $2, $3, $4) RETURNING *',
+      [data, usuario_id, xp, frase_id]
+    );
+    return result.rows[0];
+  }
+}
+
+``` 
+O model acima faz referencia a tabela de dias do banco de dados, permitindo a manipulação dos dados referentes aos dias. Em seguida, temos o model de frases:
+```js
+const db = require('../config/db');
+
+class Frase {
+  static async listarTodas() {
+    const result = await db.query('SELECT * FROM frases');
+    return result.rows;
+  }
+
+  static async buscarPorXP(xp) {
+    const result = await db.query(
+      'SELECT texto FROM frases WHERE $1 BETWEEN faixa_xp_min AND faixa_xp_max LIMIT 1',
+      [xp]
+    );
+    return result.rows[0];
+  }
+}
+
+module.exports = Frase;
+```
+O model acima faz referencia a tabela de frases do banco de dados, permitindo a manipulação dos dados referentes às frases.
+
+### 3.2. Arquitetura 
+A arquitetura MVC é um padrão de organização de software que separa a aplicação em três camadas principais: o Modelo, a Visão e o Controlador. Essa separação facilita a manutenção e escalabilidade do código.[³](#5-referências)
+
+<div align="center">
+  <sub>FIGURA 3 - Arquitetura MVC</sub><br>
+  <img src="/documentos/assetsWad/Arquitetura MVC.png" width="100%" alt="Arquitetura MVC"><br>
+  <sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Existem os controllers dedicados a usuários, tarefas, categorias, dias e frases, a aplicação gerencia ações do usuário e interage com models que representam as tabelas do banco de dados. As rotas são necessárias para fazer as requisições da aplicação, e a aplicação é executada com Node.js e Express, garantindo comunicação eficiente com o banco de dados. As views são desenvolvidas com EJS e organizadas em páginas como login, dashboard, tarefas e nova tarefa, permitindo ao usuário interagir com o sistema de forma clara e objetiva.
 
 ### 3.3. Wireframes 
 
-Os wireframes mostram a estrutura básica da página e como ela será organizada. São dividias em 3 tipos: baixa, média e alta fidelidade. Os wireframes a seguir estão padronizados em baixa fidelidade.[³](#5-referências)
+Os wireframes mostram a estrutura básica da página e como ela será organizada. São dividias em 3 tipos: baixa, média e alta fidelidade. Os wireframes a seguir estão padronizados em baixa fidelidade.[⁴](#5-referências)
 
 <div align="center">
-  <sub>FIGURA 3 - Wireframe Do DayTrack</sub><br>
-  <img src="../assets/wireframePI.png" width="100%" alt="Wireframe"><br>
+  <sub>FIGURA 4 - Wireframe Do DayTrack</sub><br>
+  <img src="../documentos/assetsWad/wireframePI.png" width="100%" alt="Wireframe"><br>
   <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
 link do figma para acesso aos itens do WAD: https://www.figma.com/design/kF7ZSWzqVe7hkX6vNPTmB2/figma-pessoal?node-id=0-1&p=f&t=WoXsyOiPXFFeGblD-0
 <br>
-
 Na primeira tela, é possível visualizar a tela de login, na qual o usuário irá cadastrar seus dados para conseguir usufruir da aplicação web. Após o login, o usuário será direcionado para a tela do dashboard, onde terá acesso a todas as suas tarefas e poderá defini-las como a fazer, em andamento ou concluídas. Ao clicar no botão de adicionar, na mesma tela, o usuário poderá incluir uma nova tarefa. No barra lateral ao clicar em tarefas, também será possível visualizar todas as tarefas adicionadas, permitindo verificar quantas ainda faltam ou se o seu progresso está adequado.
 
 
@@ -236,6 +332,10 @@ Na primeira tela, é possível visualizar a tela de login, na qual o usuário ir
 </p>
 
 <p>
-3. PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. Design de interação: além da interação homem-computador. Porto Alegre: Bookman, 2011.
+3. GAMMA, Erich et al. Padrões de Projeto: soluções reutilizáveis de software orientado a objetos. Porto Alegre: Bookman, 2000.
+</p>
+
+<p>
+4. PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. Design de interação: além da interação homem-computador. Porto Alegre: Bookman, 2011.
 </p>
 <br>

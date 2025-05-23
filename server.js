@@ -4,11 +4,13 @@ const app = express();
 const db = require('./config/db');
 const path = require('path');
 const apiRoutes = require('./routes/routes');
+const frontendRoutes = require('./routes/frontRoutes');
 
 // Configuração do EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/api', apiRoutes);
+app.use('/teste', frontendRoutes);
 
 db.connect()
   .then(() => {
@@ -18,8 +20,11 @@ db.connect()
     app.get('/', (req, res) => {
       res.send('Servidor do DayTrack está funcionando!');
     });
-
-
+    
+    app.use('/teste', (req, res) => {
+      res.status(200).send('Rota de frontend configurada');   
+    });
+    
     // Middleware 404
     app.use((req, res, next) => {
       res.status(404).send('Página não encontrada');

@@ -68,3 +68,12 @@ INSERT INTO frases (texto, faixa_xp_min, faixa_xp_max) VALUES
 ('Sua dedicação está fazendo a diferença.', 81, 100),
 ('Produtividade em alta! Orgulho define.', 81, 100),
 ('Dia concluído com sucesso! Você merece comemorar.', 81, 100);
+
+INSERT INTO usuarios (nome, email, senha) values
+(1, 'Enzo', 'enzocerutti123@gmail.com', '123456');
+
+INSERT INTO categorias (nome) VALUES
+(1, 'Estudos');
+
+INSERT INTO tarefas (titulo, concluida, data, usuario_id, categoria_id) VALUES
+('Estudar matemática', false, '2024-05-23', 1, 1);
