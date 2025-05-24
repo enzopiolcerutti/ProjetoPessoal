@@ -57,20 +57,20 @@ A solução proposta é um sistema que monitora suas tarefas com uma barra de XP
 | Identificação | US02 |
 | --- | --- |
 | **Persona** | Cauã |
-| **User Story** | "Como usuário, quero visualizar uma barra de XP que represente minha produtividade do dia, para que eu possa me motivar e acompanhar meu desempenho em tempo real." |
-| **Critério de aceite 1** | CR1: O sistema deve calcular a porcentagem de tarefas concluídas em relação ao total do dia. |
-| **Critério de aceite 2** | CR2: A barra de XP deve ser atualizada automaticamente conforme as tarefas forem marcadas como concluídas. |
-| **Critério de aceite 3** | CR3: A barra de XP deve ser animada e mudar de cor com base no progresso (ex: vermelho, amarelo, verde). |
-| **Critério de aceite 4** | CR4: O usuário deve visualizar o percentual de progresso junto à barra de XP. |
+| **User Story** | "Como usuário, quero acessar um histórico dos meus dias anteriores, para acompanhar minha evolução e manter uma rotina mais consistente." |
+| **Critério de aceite 1** | CR1: O sistema deve armazenar registros diários, data e frase exibida. |
+| **Critério de aceite 2** | CR2: O usuário deve visualizar uma lista dos últimos dias. |
+| **Critério de aceite 3** | CR3: Ao clicar em um dia do histórico, o sistema deve exibir o que foi feito aquele dia. |
+| **Critério de aceite 4** | CR4: O histórico deve ser apresentado de forma simples e cronológica. |
 
 | Identificação | US03 |
 | --- | --- |
 | **Persona** | Henrique |
-| **User Story** | "Como usuário, quero visualizar um resumo gráfico ao final do dia com categorias das tarefas realizadas, para que eu possa entender melhor minha produtividade e áreas de foco." |
-| **Critério de aceite 1** | CR1: O sistema deve permitir classificar cada tarefa por categoria (ex: trabalho, estudos, lazer). |
-| **Critério de aceite 2** | CR2: O resumo do dia deve ser gerado após o clique no botão 'Finalizar Dia'. |
-| **Critério de aceite 3** | CR3: O sistema deve apresentar um gráfico de pizza com a proporção de tarefas por categoria. |
-| **Critério de aceite 4** | CR4: Deve ser exibida uma mensagem motivacional com base no desempenho do usuário. |
+| **User Story** | "Como usuária, quero adicionar uma nova tarefa com título, data e categoria, para que eu possa organizar melhor meu dia e acompanhar meu progresso com clareza." |
+| **Critério de aceite 1** | CR1: O sistema deve permitir o preenchimento do título, data e categoria da tarefa.|
+| **Critério de aceite 2** | CR2: A tarefa deve ser automaticamente adicionada à lista do dia selecionado, se a data corresponder ao atual. |
+| **Critério de aceite 3** | CR3: A tarefa criada deve aparecer na visualização de tarefas imediatamente após ser salva.|
+| **Critério de aceite 4** | CR4: A tarefa deve ser armazenada no banco e associada ao usuário logado. |
 
 ---
 
@@ -295,22 +295,76 @@ Os wireframes mostram a estrutura básica da página e como ela será organizada
 </div>
 
 link do figma para acesso aos itens do WAD: https://www.figma.com/design/kF7ZSWzqVe7hkX6vNPTmB2/figma-pessoal?node-id=0-1&p=f&t=WoXsyOiPXFFeGblD-0
+
 <br>
+
 Na primeira tela, é possível visualizar a tela de login, na qual o usuário irá cadastrar seus dados para conseguir usufruir da aplicação web. Após o login, o usuário será direcionado para a tela do dashboard, onde terá acesso a todas as suas tarefas e poderá defini-las como a fazer, em andamento ou concluídas. Ao clicar no botão de adicionar, na mesma tela, o usuário poderá incluir uma nova tarefa. No barra lateral ao clicar em tarefas, também será possível visualizar todas as tarefas adicionadas, permitindo verificar quantas ainda faltam ou se o seu progresso está adequado.
 
 
-### 3.4. Guia de estilos (Semana 05)
+### 3.4. Guia de estilos 
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+Um guia de estilos é um documento que define padrões visuais e de linguagem para garantir consistência e identidade em um sistema ou produto digital.[⁵](#5-referências)
 
+<div align="center">
+  <sub>FIGURA 5 - Guia De Estilos</sub><br>
+  <img src="../documentos/assetsWad/guiaDeEstilos.png" width="100%" alt="Estilos"><br>
+  <sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
 
-### 3.5. Protótipo de alta fidelidade (Semana 05)
+A imagem acima se refere ao guia de estilos do dayTrack, onde é mostrada a tipografia, as cores e os componentes da aplicação.
+Sobre a tipografia está sendo utilizada a fonte poppins, a qual está aplicada para todo o projeto desde H1 até H6 mantendo a consistêcia visual entre todas as telas da aplicação.
+Em seguida, a paleta de cores é composta por tons neutros e azulados, garantindo contraste e leveza visual:
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+- #000000 (preto) e #FFFFFF (branco): cores de contraste base.
+
+- #D9D9D9 e #E3E3E3: cinzas claros usados para fundo e separação de blocos.
+
+- #A2ABBD e #212E48: tons principais de azul usados em botões, ícones e destaques, trazendo identidade ao sistema.
+
+Por fim, existem os componente visuais, os ícones utilizados representam ações e seções principais do sistema de modo que todos seguem um estilo uniforme, reforçando a identidade visual do produto.
+### 3.5. Protótipo de alta fidelidade 
+
+Um protótipo de alta fidelidade é uma representação visual quase final de um sistema, que simula com precisão a aparência, funcionalidades e interações da interface real.[⁶](#5-referências)
+
+<div align="center">
+<sub>FIGURA 6 - Tela de Login</sub><br>
+<img src="../documentos/assetsWad/Tela de Login.png" width="100%" alt="Login"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+<br>
+A tela de login é a primeira interface apresentada, onde o usuário insere seu nome, e-mail e senha para acessar o sistema. Essas informações são armazenadas para futuras reconexões.
+<br>
+
+<div align="center">
+<sub>FIGURA 7 - Tela de Dashboard</sub><br>
+<img src="../documentos/assetsWad/Dashboard.png" width="100%" alt="Dashboard"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Após o login, o usuário é direcionado ao dashboard. Esta tela oferece uma visão geral da aplicação, exibindo as tarefas do dia, o calendário e a quantidade de tarefas pendentes.
+
+<div align="center">
+<sub>FIGURA 8 - Tela de Tarefas</sub><br>
+<img src="../documentos/assetsWad/Tarefas.png" width="100%" alt="Tarefas"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Ao clicar no botão "Tarefas" na barra lateral, o usuário visualiza todas as suas tarefas disponíveis, podendo gerenciá-las, editá-las ou excluí-las conforme necessário.
+
+<div align="center">
+<sub>FIGURA 9 - Tela de Criar Tarefas</sub><br>
+<img src="../documentos/assetsWad/CriarTarefas.png" width="100%" alt="Novas Tarefas"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Por fim, ao selecionar a opção "Nova Tarefa", o usuário é direcionado à tela de criação de tarefas, onde pode adicionar uma nova tarefa preenchendo campos como título, categoria e data.
+
+Segue em anexo o link para visualização do protótipo: https://www.figma.com/design/kF7ZSWzqVe7hkX6vNPTmB2/figma-pessoal?node-id=103-2&p=f&t=XQNQlIoE6WAgDW8d-0
 
 ### 3.6. WebAPI e endpoints 
 
-A seguir estão descritos os principais endpoints da API do sistema **DayTrack**, organizados por entidade. Todos seguem o padrão REST e utilizam o prefixo `/api`.
+A seguir estão descritos os principais endpoints da API do sistema DayTrack, organizados por entidade. Todos seguem o padrão REST e utilizam o prefixo `/api`.
 
 #### Usuários (`/api/usuarios`)
 - `GET /api/usuarios` – Lista todos os usuários cadastrados.
@@ -377,4 +431,11 @@ A seguir estão descritos os principais endpoints da API do sistema **DayTrack**
 <p>
 4. PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. Design de interação: além da interação homem-computador. Porto Alegre: Bookman, 2011.
 </p>
-<br>
+
+<p>
+5. NIELSEN, Jakob. Design de interação: princípios para a interação homem-computador. Rio de Janeiro: Elsevier, 2010.
+</p>
+
+<p>
+6. SILVA, Tatiana Amorim da; BARBOSA, Simone Diniz Junqueira. Prototipação no design de interação. In: BARBOSA, Simone Diniz Junqueira. Interação humano-computador. Rio de Janeiro: Elsevier, 2010. p. 365–390.
+</p>
