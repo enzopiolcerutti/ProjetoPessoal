@@ -18,8 +18,6 @@
 
 Este projeto é um gerenciador de tarefas focado no planejamento diário e produtividade pessoal, criado para quem busca algo além de uma lista de afazeres. A proposta é simples e inovadora o sistema não só organiza as tarefas do dia, mas também acompanha o progresso em tempo real e oferece um resumo visual de como o dia foi aproveitado.
 
-O principal diferencial é a barra de XP, inspirada em mecânicas de jogos, que é preenchida à medida que as tarefas venham a ser concluídas. A lógica é simples, tarefas feitas divididas pelo total de tarefas, com uma barra animada que muda de cor conforme o progresso (de vermelho para verde).
-
 Ao final do dia, o usuário pode verificar as atividades realizadas, mostrando a distribuição das tarefas por categoria e uma frase motivacional baseada no seu desempenho daquele dia. Isso ajuda a entender os hábitos diários e a planejar melhor os próximos dias.
 
 O sistema também armazena o histórico dos dias anteriores e funciona totalmente no navegador, tornando a organização do dia a dia mais envolvente.
@@ -310,9 +308,7 @@ Na primeira tela, é possível visualizar a tela de login, na qual o usuário ir
 
 *Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
 
-### 3.6. WebAPI e endpoints (Semana 05)
-
- ### 3.6. WebAPI e endpoints
+### 3.6. WebAPI e endpoints 
 
 A seguir estão descritos os principais endpoints da API do sistema **DayTrack**, organizados por entidade. Todos seguem o padrão REST e utilizam o prefixo `/api`.
 
