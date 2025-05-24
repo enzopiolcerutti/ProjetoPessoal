@@ -296,7 +296,6 @@ Os wireframes mostram a estrutura básica da página e como ela será organizada
 
 link do figma para acesso aos itens do WAD: https://www.figma.com/design/kF7ZSWzqVe7hkX6vNPTmB2/figma-pessoal?node-id=0-1&p=f&t=WoXsyOiPXFFeGblD-0
 
-<br>
 
 Na primeira tela, é possível visualizar a tela de login, na qual o usuário irá cadastrar seus dados para conseguir usufruir da aplicação web. Após o login, o usuário será direcionado para a tela do dashboard, onde terá acesso a todas as suas tarefas e poderá defini-las como a fazer, em andamento ou concluídas. Ao clicar no botão de adicionar, na mesma tela, o usuário poderá incluir uma nova tarefa. No barra lateral ao clicar em tarefas, também será possível visualizar todas as tarefas adicionadas, permitindo verificar quantas ainda faltam ou se o seu progresso está adequado.
 
@@ -312,7 +311,9 @@ Um guia de estilos é um documento que define padrões visuais e de linguagem pa
 </div>
 
 A imagem acima se refere ao guia de estilos do dayTrack, onde é mostrada a tipografia, as cores e os componentes da aplicação.
+
 Sobre a tipografia está sendo utilizada a fonte poppins, a qual está aplicada para todo o projeto desde H1 até H6 mantendo a consistêcia visual entre todas as telas da aplicação.
+
 Em seguida, a paleta de cores é composta por tons neutros e azulados, garantindo contraste e leveza visual:
 
 - #000000 (preto) e #FFFFFF (branco): cores de contraste base.
