@@ -18,7 +18,13 @@ exports.criarTarefa = async (req, res) => {
 // Listar tarefas
 exports.listarTarefas = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM tarefas');
+    const { usuario_id } = req.query;
+    let result;
+    if (usuario_id) {
+      result = await pool.query('SELECT * FROM tarefas WHERE usuario_id = $1', [usuario_id]);
+    } else {
+      result = await pool.query('SELECT * FROM tarefas');
+    }
     res.status(200).json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });

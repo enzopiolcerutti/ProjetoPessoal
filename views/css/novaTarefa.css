@@ -1,0 +1,238 @@
+/* Importação da fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F8F9FB;
+    color: #212E48;
+    margin: 0;
+    padding: 0;
+}
+
+.nova-tarefa-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar igual ao dashboard/tarefas */
+.sidebar {
+    width: 307px;
+    background: #E3E3E3;
+    padding: 0;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+.logo-section {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #212E48;
+}
+.logo {
+    width: 200px;
+    height: auto;
+}
+.nav-menu {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid rgba(33, 46, 72, 0.2);
+    font-size: 24px;
+    font-weight: 600;
+    color: #212E48;
+}
+.nav-item:hover {
+    background: rgba(33, 46, 72, 0.1);
+}
+.nav-item i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 307px;
+    flex: 1;
+    min-height: 100vh;
+    background: #F8F9FB;
+}
+
+/* Header igual ao dashboard/tarefas */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+    border-bottom: 1px solid rgba(33, 46, 72, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+}
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #E3E3E3;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #212E48;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.back-btn:hover {
+    background: #d0d0d0;
+    transform: translateX(-2px);
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.notification-icon,
+.profile-icon {
+    font-size: 25px;
+    color: #212E48;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.notification-icon:hover,
+.profile-icon:hover {
+    color: #1a2338;
+}
+
+/* Formulário */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #E3E3E3;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.form-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: #212E48;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #212E48;
+    margin-bottom: 10px;
+}
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #212E48;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    margin-bottom: 5px;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+.btn-primary {
+    background: #212E48;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.btn-primary:hover {
+    background: #1a2338;
+}
+.btn-secondary {
+    background: #E3E3E3;
+    color: #212E48;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.btn-secondary:hover {
+    background: #d0d0d0;
+}
+
+/* Pop-up visual para feedback */
+.popup-msg {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #212E48;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 4px 16px rgba(33,46,72,0.2);
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-20px);
+}
+.popup-msg.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.popup-success { background: #28a745; }
+.popup-error { background: #dc3545; }
+.popup-info { background: #212E48; }
+
+@media (max-width: 900px) {
+    .main-content {
+        margin-left: 0;
+    }
+    .sidebar {
+        display: none;
+    }
+    .form-container {
+        margin: 20px;
+        padding: 20px 10px;
+    }
+}

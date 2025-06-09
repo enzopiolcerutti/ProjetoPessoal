@@ -70,7 +70,8 @@ INSERT INTO frases (texto, faixa_xp_min, faixa_xp_max) VALUES
 ('Dia concluído com sucesso! Você merece comemorar.', 81, 100);
 
 INSERT INTO usuarios (nome, email, senha) values
-(1, 'Enzo', 'enzocerutti123@gmail.com', '123456');
+(1, 'Enzo', 'enzocerutti123@gmail.com', '123456'),
+(2, 'Maria', 'maria@gmail.com', '654321');
 
 INSERT INTO categorias (nome) VALUES
 (1, 'Estudos');

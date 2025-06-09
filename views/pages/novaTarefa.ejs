@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Tarefa</title>
+    <link rel="stylesheet" href="novaTarefa.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="nova-tarefa-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="/assets/dayTrackLogo.png" alt="DayTrack Logo" class="logo">
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="window.location.href='/dashboard'">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" onclick="window.location.href='/tarefas'">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tarefas</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="window.history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+                <div class="header-actions">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <i class="fas fa-user-circle profile-icon"></i>
+                </div>
+            </header>
+            <div class="form-container">
+                <h1 class="form-title">Nova tarefa</h1>
+                <form id="nova-tarefa-form" class="task-form">
+                    <div class="form-group">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Título da tarefa" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <select id="categoria" name="categoria" class="form-select" required>
+                            <option value="">Descrição da tarefa</option>
+                            <option value="hoje">Hoje</option>
+                            <option value="proximas">Próximas</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="pessoal">Pessoal</option>
+                            <option value="urgente">Urgente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" id="data" name="data" class="form-input" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="window.location.href='/tarefas'">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="/scripts/novaTarefa.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</html>

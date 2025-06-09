@@ -14,7 +14,8 @@ router.put('/tarefas/:id', tarefaController.editarTarefa);
 router.delete('/tarefas/:id', tarefaController.excluirTarefa);
 
 // Usuários
-router.post('/usuarios', usuarioController.criarUsuario);
+router.post('/usuarios/login', usuarioController.login); // Rota de login
+router.post('/usuarios', usuarioController.criarUsuario); // Rota de criação de usuário
 router.get('/usuarios', usuarioController.listarUsuarios);
 router.put('/usuarios/:id', usuarioController.editarUsuario);
 router.delete('/usuarios/:id', usuarioController.excluirUsuario);

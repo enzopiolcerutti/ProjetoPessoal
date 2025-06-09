@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Rota da página de login
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
   res.render('pages/login');
 });
 
@@ -13,7 +13,7 @@ router.get('/dashboard', (req, res) => {
 
 // Rota de visualização de tarefas
 router.get('/tarefas', (req, res) => {
-  res.render('pages/tarefa');
+  res.render('pages/tarefas');
 });
 
 // Rota para adicionar nova tarefa

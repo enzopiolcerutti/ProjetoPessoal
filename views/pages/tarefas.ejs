@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas - DayTrack</title>
+    <link rel="stylesheet" href="tarefas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="tarefas-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="/assets/dayTrackLogo.png" alt="DayTrack Logo" class="logo">
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item" onclick="window.location.href='dashboard'">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item active">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tarefas</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar tarefas..." class="search-input" id="search-tasks">
+                </div>
+                <div class="header-actions">
+                    <button class="new-task-btn" id="new-task-btn" onclick="window.location.href='/nova-tarefa'">+ Nova Tarefa</button>
+                    <i class="fas fa-bell notification-icon"></i>
+                    <i class="fas fa-user-circle profile-icon"></i>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Page Title -->
+                <h1 class="page-title">Tarefas</h1>
+
+                <!-- Tasks Section -->
+                <div class="tasks-section">
+                    <div class="section-header">
+                        <h2>Gerencie suas tarefas</h2>
+                        <p class="section-subtitle">Visualize, filtre e organize suas tarefas</p>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="filter-bar">
+                        <div class="search-filter">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Filtrar tarefas..." id="filter-input">
+                        </div>
+                        <div class="filter-options">
+                            <select id="status-filter" class="filter-select">
+                                <option value="all">Todas</option>
+                                <option value="pending">Pendentes</option>
+                                <option value="completed">Concluídas</option>
+                            </select>
+                            <select id="category-filter" class="filter-select">
+                                <option value="all">Todas Categorias</option>
+                                <option value="trabalho">Trabalho</option>
+                                <option value="pessoal">Pessoal</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tasks List -->
+                    <div class="tasks-list" id="tasks-list">
+                        <!-- Tasks will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="empty-state" style="display: none;">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Nenhuma tarefa encontrada</h3>
+                        <p>Crie sua primeira tarefa ou ajuste os filtros</p>
+                        <button class="btn-primary" onclick="document.getElementById('new-task-btn').click()">
+                            <i class="fas fa-plus"></i>
+                            Criar Nova Tarefa
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Nova Tarefa (reutilizando do código anterior) -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-content">
+                <h2 class="modal-title">Nova tarefa</h2>
+                
+                <form id="nova-tarefa-form" class="task-form">
+                    <div class="form-group">
+                        <label for="task-title">Título</label>
+                        <input type="text" id="task-title" name="title" placeholder="Título da tarefa" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="task-category">Categoria</label>
+                        <select id="task-category" name="category" class="form-select" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="pessoal">Pessoal</option>
+                            <option value="urgente">Urgente</option>
+                            <option value="hoje">Para Hoje</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="task-date">Data</label>
+                        <input type="date" id="task-date" name="date" class="form-input date-input" required>
+                        <i class="fas fa-calendar-alt date-icon"></i>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="cancel-btn">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/tarefas.js"></script>
+</body>
+</html>

@@ -398,7 +398,57 @@ A seguir estão descritos os principais endpoints da API do sistema DayTrack, or
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+### Login
+
+A primeira tela desenvolvida na aplicação foi a tela de login, que apresenta uma interface simplificada e de fácil uso para o usuário. A seguir, é apresentada uma demonstração visual dessa tela. Ela já está conectada ao banco de dados e realiza a verificação de credenciais, identificando se o usuário está utilizando um login válido. Com base nessa validação, o sistema permite ou bloqueia o acesso às funcionalidades do DayTrack.
+
+<div align="center">
+<sub>FIGURA 10 - Login Aplicado ao LocalHost</sub><br>
+<img src="../documentos/assetsWad/LoginFuncionando.png" width="100%" alt="login funcional"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+
+A tela foi implementada em EJS e está localizada no arquivo views/pages/login.ejs, com estilização aplicada por meio do arquivo views/css/login.css. A lógica de autenticação está conectada ao backend via rota em routes/frontRoutes.js, que por sua vez chama o usarioController.js, responsável por verificar os dados enviados e consultar o banco de dados para validar o login. O formulário envia as informações via método POST, e em caso de sucesso, o usuário é redirecionado para o dashboard. A interface é responsiva e apresenta um design minimalista, alinhado à identidade visual do sistema.
+
+---
+
+### Dashboard
+A segunda tela implementada na aplicação foi o dashboard, que serve como a área principal de visualização e acompanhamento das tarefas do usuário. Nessa interface, é possível observar um resumo das atividades do dia, com contadores de tarefas totais, pendentes, concluídas e programadas especificamente para o dia atual. A tela foi desenvolvida em EJS, no arquivo views/pages/dashboard.ejs, com dados dinâmicos fornecidos pelo banco de dados através do tarefaController.js. As informações são buscadas e repassadas à view por meio da rota definida em frontRoutes.js, utilizando res.render() para renderizar os dados.
+
+O exemplo da tela na aplicação é a seguinte:
+
+<div align="center">
+<sub>FIGURA 11 - Dashboard Aplicado ao LocalHost</sub><br>
+<img src="../documentos/assetsWad/DashboardFuncional.png" width="100%" alt="dashboard localhost"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Visualmente, a página apresenta um layout limpo e organizado, com estilização feita em CSS na pasta public/css, seguindo o guia de estilos previamente definido. O menu lateral permite a navegação entre as principais seções do sistema, como Dashboard e Tarefas. Já o conteúdo principal mostra os cards de resumo e uma área de abas que permitirá ao usuário alternar entre tarefas de hoje, próximas ou concluídas. Conforme imagem abaixo, a interface está integrada ao backend e já recebe os dados reais do sistema, prontos para futura expansão com interação via Fetch API.
+
+---
+### Tarefas
+
+A tela de tarefas foi desenvolvida com o objetivo de permitir que o usuário visualize, filtre e organize suas tarefas de forma prática. A interface conta com um campo de busca, filtros por status e categoria, além de um botão de atalho para criar uma nova tarefa. Quando não há tarefas cadastradas ou os filtros não retornam resultados, a tela exibe uma mensagem informativa com a opção de iniciar o primeiro cadastro.
+
+<div align="center">
+<sub>FIGURA 12 - Tarefas Aplicado ao LocalHost</sub><br>
+<img src="../documentos/assetsWad/TarefasFuncional.png" width="100%" alt="tarefas localhost"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+
+Essa view foi construída no arquivo views/pages/tarefa.ejs, consumindo dados do banco por meio do tarefaController.js, e é renderizada através das rotas definidas em frontRoutes.js. A estilização foi feita com base no guia visual do projeto, utilizando CSS localizado em views/css/tarefas.css, garantindo alinhamento com a identidade do DayTrack. A navegação lateral permanece visível, mantendo a consistência entre as páginas da aplicação. 
+
+---
+### Nova Tarefa
+A tela de cadastro de nova tarefa foi implementada para permitir que o usuário adicione manualmente atividades ao sistema. A interface apresenta um formulário simples e centralizado com campos para o título da tarefa, seleção da categoria e data prevista. A ação de salvar envia os dados para o backend, utilizando o método POST para inserção no banco de dados. Esta view está localizada no arquivo views/pages/novaTarefa.ejs, sendo ativada pela rota /nova-tarefa, definida no frontRoutes.js.
+
+<div align="center">
+<sub>FIGURA 13 - Nova-Tarefa Aplicado ao LocalHost</sub><br>
+<img src="../documentos/assetsWad/NovaTarefaFuncional.png" width="100%" alt="nova tarefa funcional"><br>
+<sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
+Ao preencher o formulário e clicar em “Salvar”, os dados são tratados no tarefaController.js, que se comunica diretamente com o banco de dados para registrar a nova tarefa. A estilização segue o guia visual do DayTrack, com espaçamentos generosos, botões com feedback visual e tipografia consistente. A navegação lateral e o botão “Voltar” garantem uma boa usabilidade e retorno rápido às demais seções da aplicação. 
 
 ---
 

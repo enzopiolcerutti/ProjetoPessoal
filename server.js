@@ -9,21 +9,27 @@ const frontendRoutes = require('./routes/frontRoutes');
 // Configuração do EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Configuração de middlewares
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'views/css')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+app.use('/views/css', express.static(path.join(__dirname, 'views/css')));
+
+// Configuração das rotas
 app.use('/api', apiRoutes);
-app.use('/teste', frontendRoutes);
 
 db.connect()
-  .then(() => {
-    console.log('Conectado ao banco de dados PostgreSQL');
+  .then(() => {    console.log('Conectado ao banco de dados PostgreSQL');
 
-    app.use(express.json());
+    // Configurando a rota raiz para o login
     app.get('/', (req, res) => {
-      res.send('Servidor do DayTrack está funcionando!');
+      res.render('pages/login');
     });
-    
-    app.use('/teste', (req, res) => {
-      res.status(200).send('Rota de frontend configurada');   
-    });
+
+    // Rotas da aplicação
+    app.use('/', frontendRoutes);
     
     // Middleware 404
     app.use((req, res, next) => {
