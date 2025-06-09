@@ -404,7 +404,7 @@ A primeira tela desenvolvida na aplicação foi a tela de login, que apresenta u
 
 <div align="center">
 <sub>FIGURA 10 - Login Aplicado ao LocalHost</sub><br>
-<img src="../documentos/assetsWad/LoginFuncionando.png" width="100%" alt="login funcional"><br>
+<img src="../documentos/assetsWad/loginFuncionando.png" width="100%" alt="login funcional"><br>
 <sup>Fonte: Material produzido pelo autor, 2025</sup>
 </div>
 
