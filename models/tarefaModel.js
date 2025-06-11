@@ -13,6 +13,19 @@ class Tarefa {
     );
     return result.rows[0];
   }
+
+  static async atualizar(id, { titulo, concluida, data, usuario_id, categoria_id }) {
+    const result = await db.query(
+      'UPDATE tarefas SET titulo = $1, concluida = $2, data = $3, usuario_id = $4, categoria_id = $5 WHERE id = $6 RETURNING *',
+      [titulo, concluida, data, usuario_id, categoria_id, id]
+    );
+    return result.rows[0];
+  }
+
+  static async deletar(id) {
+    await db.query('DELETE FROM tarefas WHERE id = $1', [id]);
+    return { message: 'Tarefa deletada com sucesso' };
+  }
 }
 
 module.exports = Tarefa;

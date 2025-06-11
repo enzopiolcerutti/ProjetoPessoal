@@ -76,6 +76,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Adicionar nova categoria
+    const btnAddCategoria = document.getElementById('btn-add-categoria');
+    const novaCategoriaInput = document.getElementById('nova-categoria');
+    btnAddCategoria.addEventListener('click', async function () {
+        const nomeCategoria = novaCategoriaInput.value.trim();
+        if (!nomeCategoria) {
+            showPopup('Digite o nome da nova categoria.', 'error');
+            return;
+        }
+        try {
+            const response = await fetch('/api/categorias', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome: nomeCategoria })
+            });
+            if (!response.ok) throw new Error('Erro ao criar categoria');
+            const novaCategoria = await response.json();
+            // Adiciona a nova categoria ao select
+            const option = document.createElement('option');
+            option.value = novaCategoria.id;
+            option.textContent = novaCategoria.nome;
+            categoriaSelect.appendChild(option);
+            categoriaSelect.value = novaCategoria.id;
+            novaCategoriaInput.value = '';
+            showPopup('Categoria criada com sucesso!', 'success');
+        } catch (err) {
+            showPopup('Erro ao criar categoria.', 'error');
+        }
+    });
+
     // Função de popup visual
     function showPopup(msg, type = 'info') {
         let popup = document.createElement('div');
@@ -87,6 +117,39 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.classList.remove('show');
             setTimeout(() => popup.remove(), 300);
         }, 2000);
+    }
+
+    // Dropdown de perfil reutilizável
+    const profileIcon = document.querySelector('.profile-icon');
+    let profileDropdown = document.getElementById('profileDropdown');
+    if (!profileDropdown) {
+        profileDropdown = document.createElement('div');
+        profileDropdown.className = 'profile-dropdown';
+        profileDropdown.id = 'profileDropdown';
+        profileDropdown.innerHTML = '<button class="profile-option" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>';
+        document.body.appendChild(profileDropdown);
+    }
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (profileIcon && profileDropdown) {
+        profileIcon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+            // Posicionar dropdown abaixo do ícone
+            const rect = profileIcon.getBoundingClientRect();
+            profileDropdown.style.top = (window.scrollY + rect.bottom + 10) + 'px';
+            profileDropdown.style.right = (window.innerWidth - rect.right) + 'px';
+        });
+        document.addEventListener('click', function (e) {
+            if (!profileDropdown.contains(e.target) && e.target !== profileIcon) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    }
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+            localStorage.removeItem('usuario_id');
+            window.location.href = '/login';
+        });
     }
 });
 

@@ -236,19 +236,21 @@ body {
 }
 
 .task-item {
-    background: white;
+    background: #fff;
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px 32px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    gap: 18px;
+    box-shadow: 0 2px 8px rgba(33, 46, 72, 0.07);
+    margin-bottom: 18px;
+    transition: box-shadow 0.2s;
+    position: relative;
+    border: 1.5px solid #e3e3e3;
 }
 
 .task-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(33, 46, 72, 0.13);
 }
 
 .task-item.completed {
@@ -256,11 +258,12 @@ body {
 }
 
 .task-checkbox {
-    width: 15px;
-    height: 15px;
-    border: 1px solid #212E48;
-    cursor: pointer;
-    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #212E48;
+    border-radius: 4px;
+    accent-color: #212E48;
+    margin-right: 16px;
 }
 
 .task-checkbox:checked::after {
@@ -275,20 +278,22 @@ body {
 
 .task-content {
     flex: 1;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .task-title {
     font-size: 18px;
     font-weight: 600;
     color: #212E48;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     transition: all 0.3s ease;
 }
 
 .task-item.completed .task-title {
     text-decoration: line-through;
-    opacity: 0.6;
+    color: #aaa;
 }
 
 .task-description {
@@ -306,17 +311,20 @@ body {
 }
 
 .task-category {
-    background: rgba(33, 46, 72, 0.1);
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 14px;
+    color: #4a4a4a;
+    background: #f2f2f2;
+    border-radius: 8px;
+    padding: 4px 12px;
+    margin-left: 0;
+    margin-top: 2px;
+    display: inline-block;
 }
 
 .task-date {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    font-size: 14px;
+    color: #888;
+    margin-left: 0;
 }
 
 .task-actions {
@@ -328,17 +336,32 @@ body {
 .task-delete {
     color: #212E48;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: color 0.3s;
     padding: 5px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .task-edit:hover {
     color: #007bff;
+    background: #e3e3e3;
+}
+
+.task-delete {
+    color: #212E48;
+    font-size: 20px;
+    margin-left: auto;
+    transition: color 0.2s, background 0.2s;
 }
 
 .task-delete:hover {
     color: #dc3545;
+    background: #f8d7da;
 }
 
 /* Empty State */
@@ -346,23 +369,19 @@ body {
     text-align: center;
     padding: 60px 20px;
     color: rgba(33, 46, 72, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .empty-state i {
     font-size: 64px;
     margin-bottom: 20px;
     opacity: 0.5;
-}
-
-.empty-state h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #212E48;
-}
-
-.empty-state p {
-    font-size: 16px;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-primary {
@@ -378,11 +397,41 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    justify-content: center;
 }
 
-.btn-primary:hover {
+.btn-nova-tarefa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #212E48;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin: 0 auto;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(33,46,72,0.07);
+    transition: background 0.2s;
+}
+
+.btn-nova-tarefa:hover {
     background: #1a2338;
-    transform: translateY(-1px);
+}
+
+.btn-nova-tarefa i {
+    font-size: 22px;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.btn-nova-tarefa span {
+    display: flex;
+    align-items: center;
 }
 
 /* Modal Styles (reutilizando do código anterior) */
@@ -561,6 +610,41 @@ body {
 }
 
 .popup-info { background: #212E48; }
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(33,46,72,0.13);
+    min-width: 180px;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    padding: 10px 0;
+    border: 1.5px solid #e3e3e3;
+}
+
+.profile-dropdown.show {
+    display: flex;
+}
+
+.profile-dropdown .profile-option {
+    padding: 14px 24px;
+    font-size: 16px;
+    color: #212E48;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+    border: none;
+    background: none;
+}
+
+.profile-dropdown .profile-option:hover {
+    background: #e3e3e3;
+}
 
 /* Responsive Design */
 @media (max-width: 1200px) {

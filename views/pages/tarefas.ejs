@@ -38,7 +38,6 @@
                 <div class="header-actions">
                     <button class="new-task-btn" id="new-task-btn" onclick="window.location.href='/nova-tarefa'">+ Nova Tarefa</button>
                     <i class="fas fa-bell notification-icon"></i>
-                    <i class="fas fa-user-circle profile-icon"></i>
                 </div>
             </header>
 
@@ -67,27 +66,44 @@
                             </select>
                             <select id="category-filter" class="filter-select">
                                 <option value="all">Todas Categorias</option>
-                                <option value="trabalho">Trabalho</option>
-                                <option value="pessoal">Pessoal</option>
-                                <option value="urgente">Urgente</option>
+                                <% categorias.forEach(function(categoria) { %>
+                                    <option value="<%= categoria.id %>"><%= categoria.nome %></option>
+                                <% }); %>
                             </select>
                         </div>
                     </div>
 
                     <!-- Tasks List -->
                     <div class="tasks-list" id="tasks-list">
-                        <!-- Tasks will be dynamically loaded here -->
-                    </div>
-
-                    <!-- Empty State -->
-                    <div class="empty-state" id="empty-state" style="display: none;">
-                        <i class="fas fa-tasks"></i>
-                        <h3>Nenhuma tarefa encontrada</h3>
-                        <p>Crie sua primeira tarefa ou ajuste os filtros</p>
-                        <button class="btn-primary" onclick="document.getElementById('new-task-btn').click()">
-                            <i class="fas fa-plus"></i>
-                            Criar Nova Tarefa
-                        </button>
+                        <% if (tarefas.length === 0) { %>
+                            <div class="empty-state">
+                                <i class="fas fa-tasks"></i>
+                                <h3>Nenhuma tarefa encontrada</h3>
+                                <p>Crie sua primeira tarefa ou ajuste os filtros</p>
+                                <button class="btn-primary btn-nova-tarefa" onclick="document.getElementById('new-task-btn').click()">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Criar Nova Tarefa</span>
+                                </button>
+                            </div>
+                        <% } else { %>
+                            <% tarefas.forEach(function(tarefa, idx) { %>
+                                <div class="task-item<%= tarefa.concluida ? ' completed' : '' %>" data-id="<%= tarefa.id %>">
+                                    <input type="checkbox" class="task-checkbox" <%= tarefa.concluida ? 'checked' : '' %> disabled>
+                                    <div class="task-content">
+                                        <span class="task-title"><%= tarefa.titulo %></span>
+                                        <span class="task-date"><%= tarefa.data.toISOString ? tarefa.data.toISOString().slice(0,10) : tarefa.data %></span>
+                                        <span class="task-category">
+                                            <% var cat = categorias.find(c => c.id === tarefa.categoria_id); %>
+                                            <%= cat ? cat.nome : 'Sem categoria' %>
+                                        </span>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="task-edit" title="Concluir"><i class="fas fa-check"></i></button>
+                                        <button class="task-delete" title="Excluir"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -131,6 +147,11 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <!-- Dropdown de Perfil -->
+    <div class="profile-dropdown" id="profileDropdown">
+        <button class="profile-option" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>
     </div>
 
     <script src="/scripts/tarefas.js"></script>

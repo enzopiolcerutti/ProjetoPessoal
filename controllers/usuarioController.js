@@ -1,32 +1,18 @@
-
-const pool = require('../config/db');
+const Usuario = require('../models/usuarioModel');
 
 // Função de login
 exports.login = async (req, res) => {
   const { email, senha } = req.body;
-  console.log('Dados recebidos:', { email, senha }); // Para debug
-
   try {
-    // Primeiro vamos verificar se o usuário existe
-    const checkUser = await pool.query('SELECT * FROM usuarios WHERE email = $1', [email]);
-    console.log('Usuário encontrado:', checkUser.rows[0]); // Para debug
-
-    if (checkUser.rows.length === 0) {
-      console.log('Email não encontrado');
+    const usuarios = await Usuario.listarTodos();
+    const usuario = usuarios.find(u => u.email === email);
+    if (!usuario) {
       return res.status(401).json({ error: 'Email não encontrado' });
     }
-
-    // Agora vamos verificar a senha
-    if (checkUser.rows[0].senha !== senha) {
-      console.log('Senha incorreta');
+    if (usuario.senha !== senha) {
       return res.status(401).json({ error: 'Senha incorreta' });
     }
-
-    const usuario = checkUser.rows[0];
-
-    // Se chegou aqui, tudo está correto
-    console.log('Login bem sucedido para:', usuario.email);
-    return res.status(200).json({ 
+    return res.status(200).json({
       success: true,
       message: 'Login realizado com sucesso',
       redirect: '/dashboard',
@@ -36,9 +22,7 @@ exports.login = async (req, res) => {
         email: usuario.email
       }
     });
-
   } catch (err) {
-    console.error('Erro ao fazer login:', err);
     res.status(500).json({ error: 'Erro interno do servidor' });
   }
 };
@@ -46,11 +30,8 @@ exports.login = async (req, res) => {
 exports.criarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
   try {
-    const result = await pool.query(
-      'INSERT INTO usuarios (nome, email, senha) VALUES ($1, $2, $3) RETURNING *',
-      [nome, email, senha]
-    );
-    res.status(201).json(result.rows[0]);
+    const novoUsuario = await Usuario.criar({ nome, email, senha });
+    res.status(201).json(novoUsuario);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -58,8 +39,8 @@ exports.criarUsuario = async (req, res) => {
 
 exports.listarUsuarios = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM usuarios');
-    res.status(200).json(result.rows);
+    const usuarios = await Usuario.listarTodos();
+    res.status(200).json(usuarios);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -69,22 +50,22 @@ exports.editarUsuario = async (req, res) => {
   const { id } = req.params;
   const { nome, email, senha } = req.body;
   try {
-    const result = await pool.query(
-      'UPDATE usuarios SET nome = $1, email = $2, senha = $3 WHERE id = $4 RETURNING *',
-      [nome, email, senha, id]
-    );
-    res.status(200).json(result.rows[0]);
+    const usuarioAtualizado = await Usuario.atualizar(id, { nome, email, senha });
+    if (!usuarioAtualizado) return res.status(404).json({ message: 'Usuário não encontrado' });
+    res.status(200).json(usuarioAtualizado);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-exports.excluirUsuario = async (req, res) => {
+exports.deletarUsuario = async (req, res) => {
   const { id } = req.params;
   try {
-    await pool.query('DELETE FROM usuarios WHERE id = $1', [id]);
-    res.status(200).json({ message: 'Usuário removido com sucesso' });
+    await Usuario.deletar(id);
+    res.status(200).json({ message: 'Usuário deletado com sucesso' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.excluirUsuario = exports.deletarUsuario;

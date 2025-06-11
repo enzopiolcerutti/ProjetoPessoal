@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Dropdown de perfil reutilizável (único e funcional)
+    const profileIcon = document.querySelector('.profile-icon');
+    let profileDropdown = document.getElementById('profileDropdown');
+    if (!profileDropdown) {
+        profileDropdown = document.createElement('div');
+        profileDropdown.className = 'profile-dropdown';
+        profileDropdown.id = 'profileDropdown';
+        profileDropdown.innerHTML = '<button class="profile-option" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</button>';
+        document.body.appendChild(profileDropdown);
+    }
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (profileIcon && profileDropdown) {
+        profileIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+            // Posicionar dropdown abaixo do ícone
+            const rect = profileIcon.getBoundingClientRect();
+            profileDropdown.style.top = (window.scrollY + rect.bottom + 10) + 'px';
+            profileDropdown.style.right = (window.innerWidth - rect.right) + 'px';
+        });
+        document.addEventListener('click', function(e) {
+            if (!profileDropdown.contains(e.target) && e.target !== profileIcon) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    }
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('usuario_id');
+            window.location.href = '/login';
+        });
+    }
+
     // Elementos do DOM
     const tabs = document.querySelectorAll('.tab');
     const newTaskBtn = document.querySelector('.new-task-btn');
@@ -226,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(notification);
         setTimeout(() => { notification.remove(); }, 3000);
     }
-
+    
     // Adiciona CSS para animações
     const style = document.createElement('style');
     style.textContent = `

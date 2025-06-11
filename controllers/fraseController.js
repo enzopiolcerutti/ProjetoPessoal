@@ -1,10 +1,9 @@
-
-const pool = require('../config/db');
+const Frase = require('../models/fraseModel');
 
 exports.listarFrases = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM frases');
-    res.status(200).json(result.rows);
+    const frases = await Frase.listarTodas();
+    res.status(200).json(frases);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -13,11 +12,8 @@ exports.listarFrases = async (req, res) => {
 exports.buscarFrasePorXP = async (req, res) => {
   const { xp } = req.params;
   try {
-    const result = await pool.query(
-      'SELECT texto FROM frases WHERE $1 BETWEEN faixa_xp_min AND faixa_xp_max LIMIT 1',
-      [parseFloat(xp)]
-    );
-    res.status(200).json(result.rows[0] || { texto: "Sem frase para essa faixa de XP." });
+    const frase = await Frase.buscarPorXP(parseFloat(xp));
+    res.status(200).json(frase || { texto: "Sem frase para essa faixa de XP." });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

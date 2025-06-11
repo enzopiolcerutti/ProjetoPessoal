@@ -13,6 +13,19 @@ class Dia {
     );
     return result.rows[0];
   }
+
+  static async atualizar(id, { data, usuario_id, xp, frase_id }) {
+    const result = await db.query(
+      'UPDATE dias SET data = $1, usuario_id = $2, xp = $3, frase_id = $4 WHERE id = $5 RETURNING *',
+      [data, usuario_id, xp, frase_id, id]
+    );
+    return result.rows[0];
+  }
+
+  static async deletar(id) {
+    await db.query('DELETE FROM dias WHERE id = $1', [id]);
+    return { message: 'Dia deletado com sucesso' };
+  }
 }
 
 module.exports = Dia;

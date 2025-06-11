@@ -203,27 +203,39 @@ body {
 .tasks-header {
     display: flex;
     background: #E3E3E3;
-    border-bottom: 1px solid rgba(33, 46, 72, 0.2);
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    border-bottom: 1.5px solid #c7c7c7; /* contorno suave entre as abas */
 }
 
-.tab {
+.tasks-header .tab {
     flex: 1;
-    padding: 15px;
     text-align: center;
-    font-size: 18px;
+    padding: 18px 0;
+    font-size: 22px;
     font-weight: 600;
+    color: #212E48;
+    background: #E3E3E3;
+    border: none;
     cursor: pointer;
-    border-right: 1px solid rgba(33, 46, 72, 0.2);
-    transition: background-color 0.3s;
+    transition: background 0.2s, color 0.2s;
+    border-right: 1.5px solid #d6d6d6; /* linha divisória suave entre abas */
 }
 
-.tab:last-child {
+.tasks-header .tab:last-child {
     border-right: none;
 }
 
-.tab.active {
-    background: white;
+.tasks-header .tab.active {
+    background: #bfc2c7;
     color: #212E48;
+    box-shadow: 0 2px 8px rgba(33,46,72,0.07);
+    z-index: 2;
+}
+
+.tasks-header .tab:not(.active):hover {
+    background: #d3d3d3;
 }
 
 .tasks-content {
@@ -396,6 +408,41 @@ body {
 .calendar-days span.today {
     background: #212E48;
     color: white;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(33,46,72,0.13);
+    min-width: 180px;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    padding: 10px 0;
+    border: 1.5px solid #e3e3e3;
+}
+
+.profile-dropdown.show {
+    display: flex;
+}
+
+.profile-dropdown .profile-option {
+    padding: 14px 24px;
+    font-size: 16px;
+    color: #212E48;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+    border: none;
+    background: none;
+}
+
+.profile-dropdown .profile-option:hover {
+    background: #e3e3e3;
 }
 
 /* Responsive Design */

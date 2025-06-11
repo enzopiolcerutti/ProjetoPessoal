@@ -1,14 +1,10 @@
-
-const pool = require('../config/db');
+const Dia = require('../models/diaModel');
 
 exports.criarDia = async (req, res) => {
   const { data, usuario_id, xp, frase_id } = req.body;
   try {
-    const result = await pool.query(
-      'INSERT INTO dias (data, usuario_id, xp, frase_id) VALUES ($1, $2, $3, $4) RETURNING *',
-      [data, usuario_id, xp, frase_id]
-    );
-    res.status(201).json(result.rows[0]);
+    const novoDia = await Dia.criar({ data, usuario_id, xp, frase_id });
+    res.status(201).json(novoDia);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -16,8 +12,8 @@ exports.criarDia = async (req, res) => {
 
 exports.listarDias = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM dias');
-    res.status(200).json(result.rows);
+    const dias = await Dia.listarTodos();
+    res.status(200).json(dias);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -27,11 +23,8 @@ exports.editarDia = async (req, res) => {
   const { id } = req.params;
   const { data, usuario_id, xp, frase_id } = req.body;
   try {
-    const result = await pool.query(
-      'UPDATE dias SET data = $1, usuario_id = $2, xp = $3, frase_id = $4 WHERE id = $5 RETURNING *',
-      [data, usuario_id, xp, frase_id, id]
-    );
-    res.status(200).json(result.rows[0]);
+    const diaAtualizado = await Dia.atualizar(id, { data, usuario_id, xp, frase_id });
+    res.status(200).json(diaAtualizado);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -40,7 +33,7 @@ exports.editarDia = async (req, res) => {
 exports.excluirDia = async (req, res) => {
   const { id } = req.params;
   try {
-    await pool.query('DELETE FROM dias WHERE id = $1', [id]);
+    await Dia.deletar(id);
     res.status(200).json({ message: 'Registro de dia removido com sucesso' });
   } catch (err) {
     res.status(500).json({ error: err.message });
