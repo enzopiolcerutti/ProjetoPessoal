@@ -455,13 +455,6 @@ Ao preencher o formulário e clicar em “Salvar”, os dados são tratados no t
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web 
 
 ### 4.1 Demonstração do Sistema Web 
-<div align="center">
-  <sub>VÍDEO 1 - Demonstração DayTrack</sub><br>
-  <video width="100%" controls>
-    <source src="../documentos/assetsWad/Video Demonstração DayTrack.mp4" type="video/mp4">
-  </video><br>
-  <sup>Fonte: Material produzido pelo autor, 2025</sup>
-</div>
 
 Link para visualização do vídeo: https://drive.google.com/file/d/1Db-gxaM_kvB1BPhX8b5wfdZsjpcfJA3e/view?usp=sharing
 
