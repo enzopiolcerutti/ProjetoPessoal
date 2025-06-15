@@ -101,10 +101,66 @@ document.addEventListener('DOMContentLoaded', function () {
             categoriaSelect.value = novaCategoria.id;
             novaCategoriaInput.value = '';
             showPopup('Categoria criada com sucesso!', 'success');
+            addCategoriaForm.style.display = 'none'; // Oculta o campo após adicionar
         } catch (err) {
             showPopup('Erro ao criar categoria.', 'error');
         }
     });
+
+    // Botão expansível para adicionar categoria
+    const btnExpandCategoria = document.getElementById('btn-expand-categoria');
+    const addCategoriaForm = document.getElementById('add-categoria-form');
+    btnExpandCategoria.addEventListener('click', function() {
+        if (addCategoriaForm.style.display === 'none' || addCategoriaForm.style.display === '') {
+            addCategoriaForm.style.display = 'flex';
+            document.getElementById('nova-categoria').focus();
+        } else {
+            addCategoriaForm.style.display = 'none';
+        }
+    });
+
+    // Função para listar categorias e permitir exclusão
+    async function renderCategoriasList() {
+        const categoriasList = document.getElementById('categorias-list');
+        if (!categoriasList) return;
+        try {
+            const res = await fetch('/api/categorias');
+            const categorias = await res.json();
+            categoriasList.innerHTML = '';
+            categorias.forEach(cat => {
+                const item = document.createElement('div');
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.gap = '6px';
+                item.innerHTML = `<span>${cat.nome}</span> <button class="btn-delete-categoria" data-id="${cat.id}" title="Excluir categoria" style="background:none;border:none;color:#dc3545;cursor:pointer;"><i class="fas fa-trash"></i></button>`;
+                categoriasList.appendChild(item);
+            });
+            // Adiciona evento de exclusão
+            categoriasList.querySelectorAll('.btn-delete-categoria').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const id = this.getAttribute('data-id');
+                    if (confirm('Deseja realmente excluir esta categoria?')) {
+                        const res = await fetch(`/api/categorias/${id}`, { method: 'DELETE' });
+                        if (res.ok) {
+                            showPopup('Categoria excluída!', 'success');
+                            renderCategoriasList();
+                            // Remove do select se estiver lá
+                            const opt = Array.from(categoriaSelect.options).find(o => o.value == id);
+                            if (opt) opt.remove();
+                        } else {
+                            showPopup('Erro ao excluir categoria.', 'error');
+                        }
+                    }
+                });
+            });
+        } catch (err) {
+            categoriasList.innerHTML = '<span style="color:#dc3545">Erro ao carregar categorias</span>';
+        }
+    }
+    // Chama ao carregar
+    renderCategoriasList();
+    // Atualiza lista ao adicionar nova categoria
+    btnAddCategoria.addEventListener('click', renderCategoriasList);
 
     // Função de popup visual
     function showPopup(msg, type = 'info') {

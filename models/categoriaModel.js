@@ -23,6 +23,8 @@ class Categoria {
   }
 
   static async deletar(id) {
+    // Deleta tarefas relacionadas antes de deletar a categoria
+    await db.query('DELETE FROM tarefas WHERE categoria_id = $1', [id]);
     await db.query('DELETE FROM categorias WHERE id = $1', [id]);
     return { message: 'Categoria deletada com sucesso' };
   }

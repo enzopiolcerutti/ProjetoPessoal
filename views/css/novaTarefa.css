@@ -128,56 +128,69 @@ body {
 
 /* Formulário */
 .form-container {
-    max-width: 600px;
-    margin: 40px auto;
+    max-width: 540px;
+    margin: 48px auto;
     background: #E3E3E3;
-    padding: 40px 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 48px 36px 36px 36px;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(33,46,72,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 }
 .form-title {
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 32px;
+    font-weight: 700;
     color: #212E48;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     text-align: center;
+    letter-spacing: 0.5px;
 }
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 .form-label {
     font-size: 18px;
     font-weight: 600;
     color: #212E48;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 .form-input,
 .form-select {
     width: 100%;
-    padding: 12px;
+    padding: 13px 14px;
     font-size: 16px;
-    border: 1px solid #212E48;
-    border-radius: 8px;
+    border: 1.5px solid #212E48;
+    border-radius: 10px;
     outline: none;
     background: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    transition: border 0.2s;
+}
+.form-input:focus,
+.form-select:focus {
+    border: 1.5px solid #007bff;
 }
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 18px;
+    margin-top: 18px;
 }
 .btn-primary {
     background: #212E48;
     color: white;
-    padding: 10px 24px;
+    padding: 12px 32px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     transition: background 0.3s;
+    box-shadow: 0 2px 8px rgba(33,46,72,0.07);
 }
 .btn-primary:hover {
     background: #1a2338;
@@ -185,16 +198,17 @@ body {
 .btn-secondary {
     background: #E3E3E3;
     color: #212E48;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 8px;
+    padding: 12px 32px;
+    border: 1.5px solid #bfc4ce;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: background 0.3s, border 0.3s;
 }
 .btn-secondary:hover {
     background: #d0d0d0;
+    border: 1.5px solid #212E48;
 }
 
 /* Pop-up visual para feedback */
@@ -224,6 +238,23 @@ body {
 .popup-error { background: #dc3545; }
 .popup-info { background: #212E48; }
 
+.categorias-list-wrapper {
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+@media (max-width: 700px) {
+    .form-container {
+        max-width: 98vw;
+        padding: 18px 4vw;
+        border-radius: 12px;
+    }
+    .categorias-list-wrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
 @media (max-width: 900px) {
     .main-content {
         margin-left: 0;
