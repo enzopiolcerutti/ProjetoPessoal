@@ -396,7 +396,7 @@ A seguir estão descritos os principais endpoints da API do sistema DayTrack, or
 - `GET /api/frases/xp/:xp` – Retorna uma frase baseada na faixa de XP informada.
 
 
-### 3.7 Interface e Navegação (Semana 07)
+### 3.7 Interface e Navegação 
 
 ### Login
 
@@ -452,17 +452,32 @@ Ao preencher o formulário e clicar em “Salvar”, os dados são tratados no t
 
 ---
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web 
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Demonstração do Sistema Web 
+<div align="center">
+  <sub>VÍDEO 1 - Demonstração DayTrack</sub><br>
+  <video width="100%" controls>
+    <source src="../documentos/assetsWad/Video Demonstração DayTrack.mp4" type="video/mp4">
+  </video><br>
+  <sup>Fonte: Material produzido pelo autor, 2025</sup>
+</div>
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+Link para visualização do vídeo: https://drive.google.com/file/d/1Db-gxaM_kvB1BPhX8b5wfdZsjpcfJA3e/view?usp=sharing
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+O desenvolvimento do sistema DayTrack foi realizado utilizando a arquitetura MVC, com backend em Node.js e Express, banco de dados PostgreSQL e interface construída com EJS, CSS e JavaScript. Ao longo do projeto, foram implementadas funcionalidades completas de cadastro, listagem e gerenciamento de tarefas, além de um sistema de autenticação de usuários.
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+O código foi organizado em camadas separadas: Models para manipulação dos dados, Controllers para a lógica de negócio, Views para a interface do usuário e Routes para o controle das requisições. A integração entre frontend e backend foi feita por meio de rotas express e consumo de API com Fetch.
+
+O sistema apresenta telas como Login, Dashboard com resumo das tarefas, listagem de todas as tarefas cadastradas e o formulário para criação de novas tarefas. Toda a comunicação com o banco de dados é feita de forma dinâmica, refletindo os dados em tempo real na interface. 
+
+### 4.2 Conclusões e Trabalhos Futuros 
+
+O desenvolvimento do DayTrack permitiu a aplicação prática de conceitos de backend, frontend e banco de dados, consolidando o aprendizado sobre a arquitetura MVC e integração entre diferentes camadas do sistema. Como ponto forte, destaca-se a organização estrutural do código, a implementação de um CRUD funcional para tarefas e a utilização de um design simples e objetivo, alinhado ao guia de estilos definido.
+
+Por outro lado, alguns pontos podem ser aprimorados em versões futuras, como a implementação de filtros mais avançados para as tarefas, a criação de um sistema de autenticação com níveis de acesso e a adição de gráficos mais detalhados para análise de produtividade. Também é possível futuramente integrar notificações por e-mail e permitir que o usuário personalize as frases motivacionais.
+
+Além disso, uma evolução interessante seria a criação de um painel de histórico mais completo, com visualização por semana ou mês, e a inclusão de funcionalidades responsivas para adaptar melhor a aplicação a dispositivos móveis.
 
 
 
