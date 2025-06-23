@@ -6,11 +6,11 @@
 
 # DayTrack
 
-## :student: Integrante: 
+## Integrante: 
 
 - <a href="https://www.linkedin.com/in/enzo-piol-cerutti">Enzo Piol Cerutti</a> 
 
-## :teacher: Professores:
+## Professores:
 ### Orientador(a) 
 - <a href="https://www.linkedin.com/in/profclaudioandre/">Cláudio Fernando André</a>
 ### Instrutores
@@ -20,16 +20,16 @@
 - <a href="https://www.linkedin.com/in/henrique-mohallem-paiva-6854b460/">Henrique Mohallem Paiva</a>
 - <a href="https://www.linkedin.com/in/kizzyterra/">Kizzy Terra</a>
 
-## 📝 Descrição
+## Descrição
 
 O projeto consiste em uma aplicação web a qual tem objetivo de facilitar o gerenciamento de tarefas do usuário, o DayTrack. O site consistirá na adição de tarefas pendentes as quais o usuário terá que resolver ao longo do seu dia.
 Além disso, a aplicação contará com um sistema de registro diário que atribui uma quantidade de pontos de experiência (XP) de acordo com as tarefas concluídas. Com base nessa pontuação, o usuário receberá uma frase motivacional personalizada, incentivando a continuidade do hábito produtivo. Dessa forma, o DayTrack busca promover organização, constância e motivação na rotina do usuário.
 
-## 📝 Link de demonstração
+## Link de demonstração
 
-_Coloque aqui o link para seu projeto publicado e link para vídeo de demonstração_
+[Clique aqui para acessar o vídeo de demonstração do DayTrack!](https://drive.google.com/file/d/1Db-gxaM_kvB1BPhX8b5wfdZsjpcfJA3e/view?usp=sharing)
 
-## 📁 Estrutura de pastas
+## Estrutura de pastas
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
@@ -37,11 +37,11 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 - <b>document</b>: aqui estão todos os documentos do projeto, como o Web Application  Document (WAD) bem como documentos complementares, na pasta "other".
 
-- <b>src</b>: Todo o código fonte criado para o desenvolvimento do projeto de aplicação web.
+- <b></b>: Todo o código fonte criado para o desenvolvimento do projeto de aplicação web.
 
 - <b>README.md</b>: arquivo que serve como guia introdutório e explicação geral sobre o projeto e a aplicação (o mesmo arquivo que você está lendo agora).
 
-## 💻 Configuração para desenvolvimento e execução do código
+## Configuração para desenvolvimento e execução do código
 
 *Acrescentar as informações necessárias sobre pré-requisitos (IDEs, bibliotecas, serviços etc.) e instalação básica do projeto, descrevendo eventuais versões utilizadas. Colocar um passo a passo de como o leitor pode baixar o código e executar a aplicação a partir de sua máquina local.*
 
@@ -65,18 +65,7 @@ npm start
 5. Agora você pode acessar a aplicação através do link http://localhost:1234/
 6. O servidor está online.
 
-## 🗃 Histórico de lançamentos
-
-* 0.5.0 - XX/XX/2024
-    * 
-* 0.4.0 - XX/XX/2024
-    * 
-* 0.3.0 - XX/XX/2024
-    * 
-* 0.2.0 - XX/XX/2024
-    * 
-* 0.1.0 - XX/XX/2024
-    *
+    
 
 ## 📋 Licença/License
 ```
